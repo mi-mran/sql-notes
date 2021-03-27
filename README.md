@@ -14,7 +14,7 @@ A personal reference for SQL concepts and commands for times when I walk into a 
 
 ## Relational VS Non-relational (NoSQL) DBs
 
-| Differences        | Pros          |
+| Differences        | Features      |
 |:-------------:     |:-------------:|
 | Relational         | table-like data structure, set of tables for related data, set of logic governing tables |
 | Non-relational     | effective for unstructured data |
