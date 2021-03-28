@@ -45,6 +45,28 @@ Allows user to define, create, maintain and control access to database
 
 
 
+## DB Integrity
+
+1. Entity Integrity
+
+..* Each row in a table represents a unique instance of an object / entity ..
+..* Use primary keys to distinguish instances
+..* Primary keys: cannot have null values & must have unique values
+
+2. Domain Integrity
+
+..* All columns have a pre-defined set of valid values ..
+..* Columns must have fixed, known data type and length
+
+3. Referential Integrity
+
+..* Relations between tables must be correctly referenced ..
+..* Value in one table that refers to value in another table must share domain
+..* Enforced using foreign keys
+
+
+---
+
 ## Query Functions
 
 ### SELECT
@@ -110,6 +132,47 @@ FROM <table_name>
 ORDER BY <column> <order_direction>
 LIMIT <number_of_rows>
 ```
+
+
+
+### AGGREGATIONS
+
+- `SUM` -> sums up non-null values of a column
+
+```sql
+SELECT SUM(<column>)
+FROM <table_name>
+```
+
+- `AVG` -> returns average of non-null values of a column
+
+```sql
+SELECT AVG(<column>)
+FROM <table_name>
+```
+
+- `MIN` -> returns smallest cell value
+
+```sql
+SELECT MIN(<column>)
+FROM <table_name>
+```
+
+- `MAX` -> returns largest cell value
+
+```sql
+SELECT MAX(<column>)
+FROM <table_name>
+```
+
+- `COUNT` -> returns number of non-null cells in a column
+
+```sql
+SELECT COUNT(<column>)
+FROM <table_name>
+```
+
+...If you want to count all rows, use `COUNT(*)` or `COUNT(1)` instead
 
 
 
