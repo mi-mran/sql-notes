@@ -48,21 +48,18 @@ Allows user to define, create, maintain and control access to database
 ## DB Integrity
 
 1. Entity Integrity
-
-⋅⋅* Each row in a table represents a unique instance of an object / entity ⋅⋅
-⋅⋅* Use primary keys to distinguish instances
-⋅⋅* Primary keys: cannot have null values & must have unique values
+    * Each row in a table represents a unique instance of an object / entity
+    * Use primary keys to distinguish instances
+    * Primary keys: cannot have null values & must have unique values
 
 2. Domain Integrity
-
-⋅⋅* All columns have a pre-defined set of valid values ⋅⋅
-⋅⋅* Columns must have fixed, known data type and length
+    * All columns have a pre-defined set of valid values
+    * Columns must have fixed, known data type and length
 
 3. Referential Integrity
-
-⋅⋅* Relations between tables must be correctly referenced ⋅⋅
-⋅⋅* Value in one table that refers to value in another table must share domain
-⋅⋅* Enforced using foreign keys
+    * Relations between tables must be correctly referenced
+    * Value in one table that refers to value in another table must share domain
+    * Enforced using foreign keys
 
 
 ---
@@ -172,7 +169,7 @@ SELECT COUNT(<column>)
 FROM <table_name>
 ```
 
-⋅⋅⋅If you want to count all rows, use `COUNT(*)` or `COUNT(1)` instead
+> If you want to count all rows, use `COUNT(*)` or `COUNT(1)` instead
 
 
 
