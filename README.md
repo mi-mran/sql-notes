@@ -54,6 +54,7 @@ A personal reference for SQL concepts and commands for times when I walk into a 
 ## DB Modelling
 
 Bottom Up (Normalisation) | Top Down (ER Modelling)
+--- | ---
 start with all fields in 1 table | create entity-relationship model
 normalisation to split fields into separate tables | data & relationships represented graphically
 
