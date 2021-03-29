@@ -29,22 +29,6 @@ A personal reference for SQL concepts and commands for times when I walk into a 
 
 
 
-## Database Management System (DBMS)
-
-Allows user to define, create, maintain and control access to database
-
-
-- data integrity -> *maintains data consistency*
-- concurrency -> *allows mutliple users to access data simultaneously*
-- security -> *prevents unauthorised access*
-- recovery -> *allows for DB restoration in the event of hardware / software failure*
-
-
-
----
-
-
-
 ## DB Integrity
 
 1. Entity Integrity
@@ -60,6 +44,41 @@ Allows user to define, create, maintain and control access to database
     * Relations between tables must be correctly referenced
     * Value in one table that refers to value in another table must share domain
     * Enforced using foreign keys
+
+
+
+---
+
+
+
+## DB Modelling
+
+Bottom Up (Normalisation) | Top Down (ER Modelling)
+start with all fields in 1 table | create entity-relationship model
+normalisation to split fields into separate tables | data & relationships represented graphically
+
+### Normalisation
+
+1. 1st Normal Form (1NF): domain only has atomic values (each row cannot contain more than 1 value)
+2. 2nd Normal From (2NF): table is in 1NF and if there is a relation where primary key has multiple attributes, non-key attributes that are dependent on primary key should be separated
+3. 3rd Normal Form (3NF): table is in 2NF and there should not be non-key attributes where a non-key attribute can be determined by another non-key attribute
+
+
+
+---
+
+
+
+## Database Management System (DBMS)
+
+Allows user to define, create, maintain and control access to database
+
+
+- data integrity -> *maintains data consistency*
+- concurrency -> *allows mutliple users to access data simultaneously*
+- security -> *prevents unauthorised access*
+- recovery -> *allows for DB restoration in the event of hardware / software failure*
+
 
 
 ---
