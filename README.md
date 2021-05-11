@@ -58,11 +58,26 @@ Bottom Up (Normalisation) | Top Down (ER Modelling)
 start with all fields in 1 table | create entity-relationship model
 normalisation to split fields into separate tables | data & relationships represented graphically
 
+### Rules of Modelling
+
+Useful to maintain integrity of stored data by introducting constraints.
+
+1. Relation names are distinct from all other relation names in the relational schema
+2. 1 cell corresponds to 1 atomic value
+3. Attributes in relations have distinct names
+4. Values of an attribute are from the same domain
+5. No duplicate tuples in a relation
+6. Order of attributes does not have any significance
+7. Order of tuples has no significance
+
 ### Normalisation
 
 1. 1st Normal Form (1NF): domain only has atomic values (each row cannot contain more than 1 value)
 2. 2nd Normal From (2NF): table is in 1NF and if there is a relation where primary key has multiple attributes, non-key attributes that are dependent on primary key should be separated
 3. 3rd Normal Form (3NF): table is in 2NF and there should not be non-key attributes where a non-key attribute can be determined by another non-key attribute
+
+### Relationships
+
 
 
 
@@ -192,4 +207,35 @@ FROM <table_name>
 > If you want to count all rows, use `COUNT(*)` or `COUNT(1)` instead
 
 
+
+### FUNCTIONS (NON-CALCULATED)
+
+- string functions
+
+```sql
+LENGTH, FORMAT, INSTR, LCASE, UCASE, LEFT, RIGHT, LOCATE, LTRIM, RTRIM, REPLACE, STRCOMP, SUBSTR
+```
+
+- date functions
+
+```sql
+MONTH, QUARTER, YEAR, DATEDIFF, DAYNAME, DAYOFWEEK, MONTHNAME
+```
+
+- data type
+
+```sql
+CAST, CONVERT
+```
+
+
+
+### ALIAS 
+
+- temporarily shortens table name to make complex queries more manageable
+
+```sql
+SELECT <column_or_function> AS <alias_name>
+FROM <table_name>
+```
 
