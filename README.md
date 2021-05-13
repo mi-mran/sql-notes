@@ -3,6 +3,41 @@ Compiled SQL Notes & Examples :shipit:
 
 A personal reference for SQL concepts and commands for times when I walk into a restaurant and forget which tables I can join. (A work in progress)
 
+
+
+# Table of Contents
+
+- [Spreadsheets VS Databases](#spreadsheets-vs-databases)
+- [Relational VS Non-relational (NoSQL) DBs](#relational-vs-non-relational--nosql--dbs)
+- [DB Integrity](#db-integrity)
+- [DB Modelling](#db-modelling)
+  * [Rules of Modelling](#rules-of-modelling)
+  * [Normalisation](#normalisation)
+  * [Relationships](#relationships)
+- [Database Management System (DBMS)](#database-management-system--dbms-)
+- [Query Functions](#query-functions)
+  * [SELECT](#select)
+  * [LIKE](#like)
+  * [WHERE Conditions](#where-conditions)
+  * [ORDER BY](#order-by)
+  * [HAVING](#having)
+  * [DISTINCT](#distinct)
+  * [LIMIT](#limit)
+  * [AGGREGATIONS](#aggregations)
+  * [FUNCTIONS (NON-CALCULATED)](#functions--non-calculated-)
+  * [ALIAS](#alias)
+  * [IMPLICIT JOINS](#implicit-joins)
+  * [EXPLICIT JOINS](#explicit-joins)
+    + [INNER JOIN](#inner-join)
+    + [LEFT JOIN](#left-join)
+    + [RIGHT JOIN](#right-join)
+  * [UNION](#union)
+  * [TEMPORARY TABLES](#temporary-tables)
+  * [VIEWS](#views)
+- [ORDER OF OPERATIONS](#order-of-operations)
+
+
+
 ## Spreadsheets VS Databases
 
 | Differences   | Pros          | Cons        |
@@ -78,8 +113,15 @@ Useful to maintain integrity of stored data by introducting constraints.
 
 ### Relationships
 
+Occurs when one entity refers to another.
 
+Types of relationships include: 1:1, 1:many, many:1, many:many
 
+ Constraints and attributes govern entities participating in a relationship.
+
+1. Participation Constraint - whether every entity must participate in the relationship or not
+2. Cardinality Constraint - how many entities can participate in the relationship
+3. Attributes - attributes of relationship must be defined
 
 ---
 
@@ -107,6 +149,25 @@ Allows user to define, create, maintain and control access to database
 SELECT <columns>
 FROM <table_name>
 WHERE <filter_conditions>
+```
+
+
+
+### LIKE
+
+- `%` represents 0, 1 or many characters
+- `_` represents a single character
+
+```sql
+SELECT *
+FROM <table_name>
+WHERE <column> LIKE "_ight's Watch"
+```
+
+```sql
+SELECT *
+FROM <table_name>
+WHERE <column> LIKE "%of%"
 ```
 
 
@@ -139,6 +200,19 @@ SELECT <columns>
 FROM <table_name>
 WHERE <filter_conditions>
 ORDER BY <column> <order_direction>
+```
+
+
+
+### HAVING
+
+- used for filtering when `GROUP BY` is used, and `WHERE` cannot be used
+
+```sql
+SELECT <columns>
+FROM <table_name>
+GROUP BY <column>
+HAVING <filter_conditions>
 ```
 
 
@@ -238,4 +312,109 @@ CAST, CONVERT
 SELECT <column_or_function> AS <alias_name>
 FROM <table_name>
 ```
+
+
+
+### IMPLICIT JOINS
+
+```sql
+SELECT a.*, b.*
+FROM <table_name1> as a, <table_name2> as b
+WHERE a.<column> = b.<column>
+```
+
+
+
+### EXPLICIT JOINS
+
+#### INNER JOIN
+
+- combines data from both tables, forms rows where matching columns have same values
+
+```sql
+SELECT *
+FROM <table_name1>
+INNER JOIN <table_name2>
+ON <table_name1>.<column> = <table_name2>.<column>
+```
+
+#### LEFT JOIN
+
+- retains rows that match the condition, where those that don't match the left table will be matched with `NULL` values
+
+```sql
+SELECT *
+FROM <table_name1>
+LEFT JOIN <table_name2>
+ON <table_name1>.<column> = <table_name2>.<column>
+```
+
+#### RIGHT JOIN
+
+- retains rows that match the condition, where those that don't match the right table will be matched with `NULL` values
+
+```sql
+SELECT *
+FROM <table_name1>
+RIGHT JOIN <table_name2>
+ON <table_name1>.<column> = <table_name2>.<column>
+```
+
+
+
+### UNION
+
+- merges 2 tables row-wise, where the 2 tables must have the same structure
+
+```sql
+SELECT * FROM <table_name1>
+UNION
+SELECT * FROM <table_name2>
+```
+
+
+
+### TEMPORARY TABLES
+
+- creates a temporary table, where it will be dropped after disconnecting from DBMS
+
+```sql
+CREATE TEMPORARY TABLE a AS (
+    SELECT <column>
+    FROM <table_name>
+    GROUP BY <column>
+);
+
+SELECT * FROM a
+```
+
+
+
+### VIEWS
+
+- creates virtual table but doesn't store data and only recreates view when used in a query
+
+- listed separately from tables, used to provide access to data without explicit permission to source tables
+
+```sql
+CREATE VIEW a AS (
+    <query>
+)
+```
+
+
+
+---
+
+## ORDER OF OPERATIONS
+
+1. `SELECT`, `FROM`
+2. `WHERE`
+3. `GROUP BY`
+4. Aggregations
+5. `HAVING`
+6. `SELECT`
+7. `DISTINCT`
+8. `ORDER BY`
+9. `LIMIT`
 
